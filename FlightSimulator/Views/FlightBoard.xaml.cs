@@ -31,10 +31,6 @@ namespace FlightSimulator.Views {
                 coordinates.AppendAsync(Dispatcher, new Point(viewModel.Lat, viewModel.Lon));
             }
         }
-        // Closes the application.
-        private void Close_Click(object sender, RoutedEventArgs e) {
-            System.Environment.Exit(0);
-        }
     }
 }
 

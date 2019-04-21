@@ -43,7 +43,8 @@ namespace FlightSimulator.ViewModels {
             };
         }
         // Create the connect command if it doesn't exist.
-        public ICommand ConnectsCommand { get {
+        public ICommand ConnectsCommand {
+            get {
                 // If the command isn't null return it.
                 if (connectToSimulatorCommand != null) {
                     return connectToSimulatorCommand;
@@ -71,7 +72,8 @@ namespace FlightSimulator.ViewModels {
             model.StartConnection(ApplicationSettingsModel.Instance.FlightServerIP, ApplicationSettingsModel.Instance.FlightInfoPort);
         }
         // Get the window if it exists otherwise create it.
-        public ICommand SettingsCommand { get {
+        public ICommand SettingsCommand {
+            get {
                 // If the command isn't null return it.
                 if (openSettingsWindowCommand != null) {
                     return openSettingsWindowCommand;
@@ -93,6 +95,16 @@ namespace FlightSimulator.ViewModels {
                 settingWindow = new Settings();
                 settingWindow.Show();
             }
-        }    
+        }
+        // Close the program when pressing the Close button.
+        public ICommand CloseCommand {
+            get {
+                return new CommandHandler(() => ShutDown());
+            }
+        }
+        // Close the program by doing system exit.
+        public void ShutDown() {
+            System.Environment.Exit(0);
+        }
     }
 }
